@@ -156,7 +156,7 @@ def owner():
     )
 
 # ---------------- ADD MACHINE ----------------
-@app.route("/add-machine", methods=["POST"])
+@app.route("/add-machine", methods=["GET","POST"])
 def add_machine():
     if session.get("role") != "owner":
         return redirect(url_for("login"))
