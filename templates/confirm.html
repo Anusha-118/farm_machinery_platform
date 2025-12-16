@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmed</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="confirm-container">
+    <h2>✅ Booking Confirmed!</h2>
+
+    <div class="confirm-card">
+        <p><b>Farmer Name:</b> {{ name }}</p>
+
+        <p><b>Machine Name:</b> {{ machine.name }}</p>
+        <p><b>Category:</b> {{ machine.category }}</p>
+        <p><b>Owner:</b> {{ machine.owner }}</p>
+        <p><b>Location:</b> {{ machine.location }}</p>
+        <p><b>Price per Hour:</b> ₹{{ machine.price }}</p>
+
+        <hr>
+
+        <p><b>Date:</b> {{ date }}</p>
+        <p><b>Hours:</b> {{ hours }}</p>
+        <p><b>Total Cost:</b> ₹{{ total }}</p>
+    </div>
+
+    <div class="confirm-actions">
+        <a href="{{ url_for('farmer') }}" class="btn-back">⬅ Back to Farmer Page</a>
+        <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+    </div>
+</div>
+
+</body>
+</html>

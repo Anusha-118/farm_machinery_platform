@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farmer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="top-bar">
+    <h1>🚜 Farm Machinery Rental</h1>
+    <a href="/logout" class="back-link">Logout</a>
+</header>
+
+<!-- ===== CATEGORY BUTTONS ===== -->
+<div class="category-buttons">
+    <button onclick="showCategory('tractor')">🚜 Tractors</button>
+    <button onclick="showCategory('harvester')">🌾 Harvesters</button>
+    <button onclick="showCategory('sprayer')">💧 Sprayers</button>
+</div>
+
+<!-- ===== TRACTORS ===== -->
+<div class="machine-section" id="tractor">
+    <h2>🚜 Available Tractors</h2>
+    <div class="machine-grid">
+        {% for m in machines if m.category == "Tractor" %}
+        <div class="machine-card">
+            <h3>{{ m.name }}</h3>
+            <p><b>Owner:</b> {{ m.owner }}</p>
+            <p><b>Price:</b> ₹{{ m.price }} / hour</p>
+            <p><b>Location:</b> {{ m.location }}</p>
+            <p class="status">{{ m.status }}</p>
+
+            <!-- ✅ FIXED LINK -->
+            <a href="{{ url_for('book', machine_id=m.id) }}" class="book-btn">
+                Book Now
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- ===== HARVESTERS ===== -->
+<div class="machine-section" id="harvester" style="display:none;">
+    <h2>🌾 Available Harvesters</h2>
+    <div class="machine-grid">
+        {% for m in machines if m.category == "Harvester" %}
+        <div class="machine-card">
+            <h3>{{ m.name }}</h3>
+            <p><b>Owner:</b> {{ m.owner }}</p>
+            <p><b>Price:</b> ₹{{ m.price }} / hour</p>
+            <p><b>Location:</b> {{ m.location }}</p>
+            <p class="status">{{ m.status }}</p>
+
+            <!-- ✅ FIXED LINK -->
+            <a href="{{ url_for('book', machine_id=m.id) }}" class="book-btn">
+                Book Now
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- ===== SPRAYERS ===== -->
+<div class="machine-section" id="sprayer" style="display:none;">
+    <h2>💧 Available Sprayers</h2>
+    <div class="machine-grid">
+        {% for m in machines if m.category == "Sprayer" %}
+        <div class="machine-card">
+            <h3>{{ m.name }}</h3>
+            <p><b>Owner:</b> {{ m.owner }}</p>
+            <p><b>Price:</b> ₹{{ m.price }} / hour</p>
+            <p><b>Location:</b> {{ m.location }}</p>
+            <p class="status">{{ m.status }}</p>
+
+            <!-- ✅ FIXED LINK -->
+            <a href="{{ url_for('book', machine_id=m.id) }}" class="book-btn">
+                Book Now
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+function showCategory(category) {
+    document.getElementById("tractor").style.display = "none";
+    document.getElementById("harvester").style.display = "none";
+    document.getElementById("sprayer").style.display = "none";
+
+    document.getElementById(category).style.display = "block";
+}
+</script>
+
+</body>
+</html>

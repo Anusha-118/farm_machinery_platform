@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header class="top-bar">
+    <h1>Welcome, {{ name }} 🚜</h1>
+    <a href="/logout" class="back-link">Logout</a>
+</header>
+
+<!-- ===== ADD MACHINE BUTTON (SCROLLS TO FORM) ===== -->
+<div style="text-align:center; margin:20px;">
+    <a href="#add-machine-form" class="book-btn">➕ Add Machine</a>
+</div>
+
+<div class="owner-container">
+
+    <!-- ===== ADD MACHINE FORM ===== -->
+   <form method="POST" action="{{ url_for('add_machine') }}" class="add-machine-form">
+
+    <input type="text" name="name" placeholder="Machine Name" required>
+
+    <select name="category" required>
+        <option value="">Select Equipment</option>
+        <option value="Tractor">Tractor</option>
+        <option value="Harvester">Harvester</option>
+        <option value="Sprayer">Sprayer</option>
+    </select>
+
+    <input type="number" name="price" placeholder="Price (₹ / hour)" required>
+
+    <input type="text" name="location" placeholder="Location" required>
+
+    <button type="submit" class="book-btn">Add Machine</button>
+
+</form>
+
+    <hr style="margin:40px 0;">
+
+    <!-- ===== BOOKING REQUESTS ===== -->
+    <h2 style="text-align:center; color:white;">📋 Booking Requests</h2>
+
+    {% if bookings %}
+        {% for b in bookings %}
+            <div class="machine-card">
+                <p><b>Farmer:</b> {{ b.farmer }}</p>
+                <p><b>Machine:</b> {{ b.machine }}</p>
+                <p><b>Date:</b> {{ b.date }}</p>
+                <p><b>Hours:</b> {{ b.hours }}</p>
+                <p><b>Total:</b> ₹{{ b.total }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p style="text-align:center; color:white;">No bookings yet.</p>
+    {% endif %}
+
+</div>
+
+</body>
+</html>

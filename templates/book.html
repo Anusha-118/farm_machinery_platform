@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Machine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="booking-page">
+
+<div class="booking-card">
+
+    <h2 class="booking-title">📅 Book Machinery</h2>
+
+    <!-- MACHINE DETAILS -->
+    <div class="machine-info">
+        <p><strong>Machine:</strong> {{ machine.name }}</p>
+        <p><strong>Type:</strong> {{ machine.category }}</p>
+        <p><strong>Owner:</strong> {{ machine.owner }}</p>
+        <p><strong>Location:</strong> {{ machine.location }}</p>
+        <p class="price"><strong>Price:</strong> ₹{{ machine.price }} / hour</p>
+    </div>
+
+    <hr>
+
+    <!-- BOOKING FORM -->
+    <form method="POST">
+        <label>Select Date</label>
+        <input type="date" name="date" required>
+
+        <label>Number of Hours</label>
+        <input type="number" name="hours" min="1" required
+               oninput="calculateCost(this.value)">
+
+        <p class="cost">
+            Estimated Cost: ₹ <span id="totalCost">0</span>
+        </p>
+
+        <button type="submit" class="confirm-btn">
+            Confirm Booking
+        </button>
+    </form>
+
+    <a href="/farmer" class="back-btn">⬅ Back to Farmer Page</a>
+
+</div>
+
+<!-- COST CALCULATION -->
+<script>
+    const price = {{ machine.price }};
+
+    function calculateCost(hours) {
+        document.getElementById("totalCost").innerText = hours * price;
+    }
+</script>
+
+</body>
+</html>
