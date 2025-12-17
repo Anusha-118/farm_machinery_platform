@@ -2,7 +2,119 @@
 <html>
 <head>
     <title>Booking Confirmed</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!DOCTYPE html>
+<html>
+<head>
+    <title>Farmer Dashboard</title>
+
+    <!-- STATIC CSS -->
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+<header class="top-bar">
+    <h1>🚜 Farm Machinery Rental</h1>
+    <a href="index.html" class="back-link">Logout</a>
+</header>
+
+<!-- ===== CATEGORY BUTTONS ===== -->
+<div class="category-buttons">
+    <button onclick="showCategory('tractor')">🚜 Tractors</button>
+    <button onclick="showCategory('harvester')">🌾 Harvesters</button>
+    <button onclick="showCategory('sprayer')">💧 Sprayers</button>
+</div>
+
+<!-- ===== TRACTORS ===== -->
+<div class="machine-section" id="tractor">
+    <h2>🚜 Available Tractors</h2>
+    <div class="machine-grid">
+
+        <div class="machine-card">
+            <h3>Mahindra 575</h3>
+            <p><b>Owner:</b> Ramesh</p>
+            <p><b>Price:</b> ₹1200 / hour</p>
+            <p><b>Location:</b> 5 km away</p>
+            <p class="status">Available</p>
+            <a href="book.html" class="book-btn">Book Now</a>
+        </div>
+
+        <div class="machine-card">
+            <h3>John Deere 5310</h3>
+            <p><b>Owner:</b> Suresh</p>
+            <p><b>Price:</b> ₹1500 / hour</p>
+            <p><b>Location:</b> 7 km away</p>
+            <p class="status">Available</p>
+            <a href="book.html" class="book-btn">Book Now</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- ===== HARVESTERS ===== -->
+<div class="machine-section" id="harvester" style="display:none;">
+    <h2>🌾 Available Harvesters</h2>
+    <div class="machine-grid">
+
+        <div class="machine-card">
+            <h3>Claas Crop Tiger</h3>
+            <p><b>Owner:</b> Mahesh</p>
+            <p><b>Price:</b> ₹2500 / hour</p>
+            <p><b>Location:</b> 10 km away</p>
+            <p class="status">Available</p>
+            <a href="book.html" class="book-btn">Book Now</a>
+        </div>
+
+        <div class="machine-card">
+            <h3>Kubota DC-68G</h3>
+            <p><b>Owner:</b> Ravi</p>
+            <p><b>Price:</b> ₹2800 / hour</p>
+            <p><b>Location:</b> 12 km away</p>
+            <p class="status">Available</p>
+            <a href="book.html" class="book-btn">Book Now</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- ===== SPRAYERS ===== -->
+<div class="machine-section" id="sprayer" style="display:none;">
+    <h2>💧 Available Sprayers</h2>
+    <div class="machine-grid">
+
+        <div class="machine-card">
+            <h3>Battery Operated Sprayer</h3>
+            <p><b>Owner:</b> Anil</p>
+            <p><b>Price:</b> ₹600 / hour</p>
+            <p><b>Location:</b> 3 km away</p>
+            <p class="status">Available</p>
+            <a href="book.html" class="book-btn">Book Now</a>
+        </div>
+
+        <div class="machine-card">
+            <h3>Tractor Mounted Sprayer</h3>
+            <p><b>Owner:</b> Kiran</p>
+            <p><b>Price:</b> ₹900 / hour</p>
+            <p><b>Location:</b> 4 km away</p>
+            <p class="status">Available</p>
+            <a href="book.html" class="book-btn">Book Now</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+function showCategory(category) {
+    document.getElementById("tractor").style.display = "none";
+    document.getElementById("harvester").style.display = "none";
+    document.getElementById("sprayer").style.display = "none";
+
+    document.getElementById(category).style.display = "block";
+}
+</script>
+
+</body>
+</html>
 </head>
 <body>
 
